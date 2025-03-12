@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Fair 2025</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+        }
+        .slides {
+            display: none;
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            position: absolute;
+        }
+        .container {
+            position: relative;
+            padding: 50px;
+        }
+        h1 {
+            color: #ff6600;
+            font-size: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #333;
+            font-size: 40px;
+            font-weight: 700;
+        }
+        p {
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+        }
+        .launch-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .launch-btn:hover {
+            background-color: #cc5500;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            cursor: pointer;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <img class="slides" src="a.jpg" alt="Slide 1">
+        <img class="slides" src="b.jpg" alt="Slide 2">
+        <img class="slides" src="c.jpg" alt="Slide 3">
+    </div>
+    
+    <div class="container">
+        <h1>Career Fair 2025 Magazine Launch</h1>
+        <p style="font-size: 30px;">Where ambitions <span style="color:#ff6600; ">take flight</span></p>
+        <h2>An Expedition of Innovation, Creativity and Dedication</h2>
+        
+        <button class="launch-btn" onclick="openModal()">Launch</button>
+    </div>
+
+    <div id="videoModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <video id="magazineVideo" width="100%" height="100%" controls>
+                <source src="D.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1;}
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+
+        function openModal() {
+            let modal = document.getElementById("videoModal");
+            let video = document.getElementById("magazineVideo");
+            modal.style.display = "block";
+            video.requestFullscreen();
+            video.play();
+        }
+        function closeModal() {
+            let modal = document.getElementById("videoModal");
+            let video = document.getElementById("magazineVideo");
+            modal.style.display = "none";
+            video.pause();
+            document.exitFullscreen();
+        }
+    </script>
+</body>
+</html>
